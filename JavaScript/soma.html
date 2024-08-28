@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<style type="text/css">
+	body {
+		margin: 24px;
+	}
+
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+</style>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3. Soma</title>
+</head>
+<body>
+	<main>
+		<h1>Soma de dois Números</h1>
+
+		<p>
+			<cite>"3. Escreva um programa que solicita dois números do usuário e retorna a soma."</cite>
+		</p>
+	</main>
+</body>
+</html>
+
+<script type="text/javascript">
+	let n1, n2, total, mensagem;
+
+	n1 = Number(prompt("Digite o primeiro número:"));
+	n2 = Number(prompt("Digite o segundo número:"));
+
+	total = n1 + n2;
+
+	mensagem = `A soma de ${n1} e ${n2} é igual a ${total}`;
+
+	document.writeln(mensagem);
+	console.log(n1);
+	console.log(n2);
+	console.log(total);
+	console.log(n1,n2,total);
+</script>
