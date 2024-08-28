@@ -4,9 +4,9 @@ console.log(require("./separa"));
 const lib = require("./local_lib");
 console.log(lib);
 
+// Importa função de comparação
 const { compara: comparaArray } = lib;
-const separarString = require("./separa")
-
+const separarString = require("./separa");
 
 let texto1 = "O rato roeu a roupa do rei de Roma";
 let esperado1 = ["O", "rato", "roeu", "a", "roupa", "do", "rei", "de", "Roma"];
