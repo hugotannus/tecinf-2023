@@ -3,10 +3,23 @@
 > [!WARNING]
 > Este documento precisa ser constantemente atualizado.
 
-- Exemplo de lista
-  - Sub-item 1
-  - Sub-item 2
+---
 
-## Check List
-- [x] Terminar lista de exercícios 5
-- [ ] Implementar testes para lista de exercícios 5
+## Configurações do projeto
+
+### Instalando o Git
+
+Baixe o instalador do Git por este [link](https://git-scm.com/download/win).
+
+### Clonando o repositório
+
+```bash
+git clone https://github.com/hugotannus/tecinf-2023.git
+```
+
+### Acessando o projeto com o VSCode
+
+```bash
+cd tecinf-2023
+code .
+```
