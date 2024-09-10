@@ -1,22 +1,17 @@
-function rowToJSON(header, content) {
+function rowToJSON(header, row) {
     const obj = {};
-    console.log();
-    console.log("cabeçalho:", header);
-    console.log("conteúdo:", content);
 
     for(let i=0; i<header.length; i++) {
         let key = header[i];
-        let value = content[i];
+        let value = row[i];
 
         obj[key] = value;
-        console.log(obj);
     }
-
-    // obj["nome"] = "João";
-    // obj["idade"] = "28";
 
     return obj;
 }
+
+module.exports = { rowToJSON };
 
 const header1 =  ["nome", "idade"];
 const content1 =   ["João", "28"];
