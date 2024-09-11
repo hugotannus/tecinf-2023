@@ -1,3 +1,28 @@
+function csvToLines(csvText) {
+    return csvText.trim().split('\n');
+}
+
+function linesToRows(lines, separador) {
+    const rows = []
+
+    for(let i=0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        const row = line.split(separador);
+        
+        rows.push(row);
+    }
+
+    return rows;
+}
+
+function extractHeader(rows) {
+    return rows.shift();
+}
+
+function extractContent(rows) {
+    return rows.slice(1);
+}
+
 /**
  * Função responsável por gerar um objeto JSON à partir do
  * cabeçalho (`header`) e uma linha (`row`) extraídos da
@@ -39,6 +64,14 @@ function contentToJSON(header, content) {
     }
 
     return list;
+
+    
 }
 
-module.exports = { rowToJSON, contentToJSON };
+module.exports = {
+    csvToLines,
+    linesToRows,
+    extractHeader,
+    extractContent,
+    contentToJSON
+};
