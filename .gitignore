@@ -1,3 +1,5 @@
 *.xls?
 *.zip
 *.pdf
+
+node_modules
