@@ -1,17 +1,4 @@
-function rowToJSON(header, row) {
-    const obj = {};
-
-    for(let i=0; i<header.length; i++) {
-        let key = header[i];
-        let value = row[i];
-
-        obj[key] = value;
-    }
-
-    return obj;
-}
-
-module.exports = { rowToJSON };
+const { rowToJSON } = require("./csvTools");
 
 const header1 =  ["nome", "idade"];
 const content1 =   ["João", "28"];

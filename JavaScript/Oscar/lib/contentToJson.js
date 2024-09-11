@@ -1,17 +1,4 @@
-const { rowToJSON } = require("./rowToJson");
-
-function contentToJSON(header, content) {
-    const list = [];
-
-    for(let k = 0; k < content.length; k++) {
-        let row = content[k];
-        let obj = rowToJSON(header, row);
-
-        list.push(obj);
-    }
-
-    return list;
-}
+const { contentToJSON } = require("./csvTools");
 
 const header1 =  ["nome", "idade"];
 const content1 =   [["João", "28"], ["Maria", "32"]];
