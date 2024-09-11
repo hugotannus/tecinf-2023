@@ -1,4 +1,4 @@
-const csvTools = require('./csvTools');
+const csvTools = require('./lib/csvTools');
 
 function printCSV(csvText, columns) {
     const lines = csvTools.csvToLines(csvText);
