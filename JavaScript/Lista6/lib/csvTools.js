@@ -2,7 +2,7 @@ function csvToLines(csvText) {
     return csvText.trim().split('\n');
 }
 
-function linesToRows(lines, separador) {
+function linesToRows(lines, separador=',') {
     const rows = []
 
     for(let i=0; i < lines.length; i++) {
