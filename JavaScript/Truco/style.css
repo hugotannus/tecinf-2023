@@ -3,7 +3,8 @@ html {
 }
 
 body {
-    height: 97vh;
+    margin: 0;
+    height: 100vh;
     background-color: forestgreen;
 }
 
