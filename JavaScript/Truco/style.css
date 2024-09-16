@@ -20,15 +20,18 @@ main {
 .mesa {
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+
+    background-color: blue;
 }
 
 .carta {
     width: 226px;
     height: 314px;
 
-    background-color: darkgreen;
+    background-color: yellow;
     border: none;
+    margin: 0 20px;
+
     border-radius: 0.5rem;
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.4);
 }
@@ -36,6 +39,7 @@ main {
 .painel {
     display: flex;
     justify-content: center;
+    background-color: red;
 }
 
 button {
