@@ -10,18 +10,58 @@
 <body>
     <main>
         <div class="mesa">
-            <div class="carta"></div>
-            <div class="carta"></div>
-            <div class="carta"></div>
+            <div class="carta" id="carta1"></div>
+            <div class="carta" id="carta2"></div>
+            <div class="carta" id="carta3"></div>
         </div>
 
         <div class="painel">
-            <button class="primario">Buscar cartas</button>
+            <button class="primario">Gerar baralho</button>
             <button class="secundario" onclick="olharCartas()">Olhar cartas</button>
-            <button class="redefinir">Reembaralhar</button>
+            <button class="redefinir" onclick="reembaralhar()">Reembaralhar</button>
         </div>
     </main>
 
-    <script src="./truco.js"></script>
+    <!-- <script src="./truco.js"></script> -->
+    <script>
+        function reembaralhar() {
+            fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/shuffle/?remaining=false")
+            .then(function (respostaApi) {
+                const json = respostaApi.json();
+                return json;
+            }).then(function (jsonData){
+                console.log(jsonData);
+                if(jsonData.success) {
+                    alert("Baralho reembaralhado!");
+                }
+            }) 
+        }
+
+        function olharCartas() {      
+            fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/draw/?count=3")
+            .then(function (respostaApi) {
+                const json = respostaApi.json();
+                return json;
+            }).then(function(jsonData) {
+                const cards = jsonData.cards;
+                
+                for(let i=0; i<3; i++) {
+                    const id = `carta${i+1}`;
+                    
+                    const card = document.getElementById(id);
+                    let img = card.querySelector('img');
+                    
+                    if(img == null) {
+                        img = document.createElement('img');
+                    }
+                    
+                    img.setAttribute('src', cards[i].image);
+                    card.append(img);
+                }
+    
+                return cards;
+            });
+        }
+    </script>
 </body>
 </html>
