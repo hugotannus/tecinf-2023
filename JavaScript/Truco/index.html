@@ -36,65 +36,10 @@
         </div>
     </main>
 
-    <!-- <script src="./truco.js"></script> -->
     <script>
         reembaralhar();
-
-        function getJsonData(response) {
-            return response.json();
-        }
-
-        function atualizaInfo(jsonData) {
-            if (!jsonData.success)
-                throw new Error("Erro ao acessar dados da api");
-
-            const deck_id = jsonData.deck_id;
-            const remaining = jsonData.remaining;
-
-            const info1 = document.getElementById("deck_id");
-            const info2 = document.getElementById("remaining");
-
-            info1.innerText = deck_id;
-            info2.innerText = remaining;
-
-            return jsonData;
-        }
-
-        function reembaralhar() {
-            fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/shuffle/?remaining=false")
-                .then(getJsonData)
-                .then(atualizaInfo)
-                .catch(erro => alert(erro));
-        }
-
-        function olharCartas() {
-            fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/draw/?count=3")
-                .then(getJsonData)
-                .then(atualizaInfo)
-                .then(function (jsonData) {
-                    if (!jsonData.success) 
-                        throw new Error("Oops! Tente reembaralhar as cartas");
-
-                    const cards = jsonData.cards;
-
-                    for (let i = 0; i < 3; i++) {
-                        const id = `carta${i + 1}`;
-
-                        const card = document.getElementById(id);
-                        let img = card.querySelector('img');
-
-                        if (img == null) {
-                            img = document.createElement('img');
-                        }
-
-                        img.setAttribute('src', cards[i].image);
-                        card.append(img);
-                    }
-
-                    return true;
-                });
-        }
     </script>
+    <script src="./truco.js"></script>
 </body>
 
 </html>
