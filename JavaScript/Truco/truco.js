@@ -1,5 +1,19 @@
+// let deckId = '';
+let deckId = "4sff83670lab";
+let listOfCards = "4c,7h,7d,3c,3h,3s,3d,2c,2h,2s,2d,jc,jh,js,jd,kc,kh,ks,kd,qc,qh,qs,Qd,Ac,Ah,As,Ad"
+
+/* Funções de acesso à API */
+
+function gerarBaralho() {
+    fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${listOfCards}`)
+        .then(getJsonData)
+        .then(atualizaInfo)
+        .then(setDeckId)
+        .catch(erro => alert(erro));
+}
+
 function olharCartas() {
-    fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/draw/?count=3")
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`)
         .then(getJsonData)
         .then(atualizaInfo)
         .then(imprimeTabela)
@@ -8,11 +22,13 @@ function olharCartas() {
 }
 
 function reembaralhar() {
-    fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/shuffle/?remaining=false")
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/?remaining=false`)
         .then(getJsonData)
         .then(atualizaInfo)
         .catch(erro => alert(erro));
 }
+
+/* Funções Privadas */
 
 function getJsonData(response) {
     return response.json();
@@ -30,6 +46,12 @@ function atualizaInfo(jsonData) {
 
     info1.innerText = deck_id;
     info2.innerText = remaining;
+
+    return jsonData;
+}
+
+function setDeckId(jsonData) {
+    deckId = jsonData.deck_id;
 
     return jsonData;
 }
