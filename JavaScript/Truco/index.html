@@ -24,6 +24,10 @@
 
     <!-- <script src="./truco.js"></script> -->
     <script>
+        function getJsonData(respostaApi) {
+            const json = respostaApi.json();
+            return json;
+        }
         function reembaralhar() {
             fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/shuffle/?remaining=false")
             .then(function (respostaApi) {
@@ -34,8 +38,13 @@
                 if(jsonData.success) {
                     alert("Baralho reembaralhado!");
                 }
-            }) 
+            }).catch(function(erro){
+                alert(erro);
+                console.error(erro);
+            });
         }
+
+        a = 5 + 5;
 
         function olharCartas() {      
             fetch("https://deckofcardsapi.com/api/deck/4sff83670lab/draw/?count=3")
