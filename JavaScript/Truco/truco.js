@@ -4,6 +4,17 @@ let listOfCards = "4c,7h,7d,3c,3h,3s,3d,2c,2h,2s,2d,jc,jh,js,jd,kc,kh,ks,kd,qc,q
 
 /* Funções de acesso à API */
 
+function Deck() {
+    console.log("Criou um baralho.")
+}
+
+const deck1 = Deck();
+const deck2 = new Deck();
+
+console.log(Deck);
+console.log(deck1);
+console.log(deck2);
+
 function gerarBaralho() {
     fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${listOfCards}`)
         .then(getJsonData)
