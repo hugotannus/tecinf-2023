@@ -1,5 +1,6 @@
 const deckId = "4sff83670lab";
 const deck = new Deck(deckId);
+// deck.setDeckId({ deckId: 123 });
 
 function Deck(deckId) {
     this.deckId = deckId;
@@ -30,6 +31,11 @@ function Deck(deckId) {
             .then(atualizaInfo)
             .catch(erro => alert(erro));
     }
+
+    const setDeckId = (jsonData) => {
+        this.deckId = jsonData.deck_id;
+        return jsonData;
+    }
 }
 
 /* Funções Privadas */
@@ -50,12 +56,6 @@ function atualizaInfo(jsonData) {
 
     info1.innerText = deck_id;
     info2.innerText = remaining;
-
-    return jsonData;
-}
-
-function setDeckId(jsonData) {
-    deckId = jsonData.deck_id;
 
     return jsonData;
 }
