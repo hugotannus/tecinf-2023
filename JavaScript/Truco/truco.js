@@ -1,42 +1,35 @@
-// let deckId = '';
-let deckId = "4sff83670lab";
-let listOfCards = "4c,7h,7d,3c,3h,3s,3d,2c,2h,2s,2d,jc,jh,js,jd,kc,kh,ks,kd,qc,qh,qs,Qd,Ac,Ah,As,Ad"
+const deckId = "4sff83670lab";
+const deck = new Deck(deckId);
 
-/* Funções de acesso à API */
+function Deck(deckId) {
+    this.deckId = deckId;
+    this.listOfCards = "4c,7h,7d,3c,3h,3s,3d,2c,2h,2s,2d,jc,jh,js,jd,kc,kh,ks,kd,qc,qh,qs,Qd,Ac,Ah,As,Ad";
 
-function Deck() {
-    console.log("Criou um baralho.")
-}
+    /* Funções de acesso à API */
 
-const deck1 = Deck();
-const deck2 = new Deck();
-
-console.log(Deck);
-console.log(deck1);
-console.log(deck2);
-
-function gerarBaralho() {
-    fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${listOfCards}`)
+    this.gerarBaralho = function () {
+        fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${this.listOfCards}`)
         .then(getJsonData)
         .then(atualizaInfo)
         .then(setDeckId)
         .catch(erro => alert(erro));
-}
+    }
 
-function olharCartas() {
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`)
-        .then(getJsonData)
-        .then(atualizaInfo)
-        .then(imprimeTabela)
-        .then(mostraCartas)
-        .catch(erro => alert(erro));
-}
+    this.olharCartas = function() {
+        fetch(`https://deckofcardsapi.com/api/deck/${this.deckId}/draw/?count=3`)
+            .then(getJsonData)
+            .then(atualizaInfo)
+            .then(imprimeTabela)
+            .then(mostraCartas)
+            .catch(erro => alert(erro));
+    }
 
-function reembaralhar() {
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/?remaining=false`)
-        .then(getJsonData)
-        .then(atualizaInfo)
-        .catch(erro => alert(erro));
+    this.reembaralhar = function() {
+        fetch(`https://deckofcardsapi.com/api/deck/${this.deckId}/shuffle/?remaining=false`)
+            .then(getJsonData)
+            .then(atualizaInfo)
+            .catch(erro => alert(erro));
+    }
 }
 
 /* Funções Privadas */
@@ -76,17 +69,17 @@ function imprimeTabela(json) {
 
 function constroiCarta(cardId, cardImage) {
     const card = document.getElementById(cardId);
-    
+
     let img = card.querySelector('img');
     if (img == null) img = document.createElement('img');
-    
+
     img.setAttribute('src', cardImage);
     card.append(img);
 }
 
 function mostraCartas(jsonData) {
     const cards = jsonData.cards;
-    
+
     for (let i=0; i < cards.length; i++) {
         const cardId = `carta${i + 1}`;
         const cardImage = cards[i].image;
